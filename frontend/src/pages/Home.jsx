@@ -7,7 +7,7 @@ import api from "../api/api";
 import hero from "../assets/hero.png";
 import Footer from "../component/Footer";
 import boxdropLogo from "../assets/pagelogo.png";
-import "./home.css";
+import "./Home.css";
 import screenshot1 from "../assets/Screenshot 2026-01-16 124524.png";
 import screenshot2 from "../assets/Screenshot 2026-01-16 124736.png"
 import screenshot3 from "../assets/Screenshot 2026-01-16 124805.png"
