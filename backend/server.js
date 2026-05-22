@@ -22,7 +22,7 @@ console.log("firebase connected");
 
 const app = express();
 
-app.use("/webhook", webhookRoutes);
+app.use("/webhook",express.raw({ type: "application/json" }), webhookRoutes);
 
 app.use(express.json());
 app.use(cors({
