@@ -30,7 +30,9 @@ export const razorpayWebhook = async (req, res) => {
     if (event.event === "payment.captured") {
       const payment = event.payload.payment.entity;
       const notes = payment.notes || {};
-     console.log(notes.type);
+    //  console.log(notes.type);
+    console.log("🔥 NOTES:", notes);
+console.log("🔥 PAYMENT:", payment);
 
 
     
