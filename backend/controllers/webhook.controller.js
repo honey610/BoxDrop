@@ -5,7 +5,7 @@ import Subscription from "../models/subscription.model.js";
 import { calculateNextBillingDate } from "../controllers/subscription.controller.js";
 import axios from "axios";
 
-const N8N_WEBHOOK = "https://boxdrop.app.n8n.cloud/webhook-test/order-update";
+// const N8N_WEBHOOK = "https://boxdrop.app.n8n.cloud/webhook-test/order-update";
 export const razorpayWebhook = async (req, res) => {
   console.log("🔥 Razorpay webhook HIT");
 
@@ -54,7 +54,9 @@ console.log("🔥 PAYMENT:", payment);
           userId: notes.userId,
           sellerId: notes.sellerId,
           boxId: notes.boxId,
-          shippingAddress: JSON.parse(notes.shippingAddress),
+          shippingAddress: notes.shippingAddress
+        ? JSON.parse(notes.shippingAddress)
+        : {},
           quantity: 1,
           priceSnapshot: payment.amount / 100,
 
@@ -69,7 +71,7 @@ console.log("🔥 PAYMENT:", payment);
           status: "PLACED",
         });
 try{
-          await axios.post(N8N_WEBHOOK, {
+          await axios.post( {
   event: "ONE_TIME_ORDER_CREATED",
   userId: notes.userId,
   boxId: notes.boxId,
@@ -124,7 +126,7 @@ try{
           status: "PLACED",
         });
 try{
-        await axios.post(N8N_WEBHOOK, {
+        await axios.post( {
   event: "SUBSCRIPTION_CREATED",
   subscriptionId: subscription._id,
   userId: notes.userId,
@@ -173,7 +175,7 @@ try{
 
         await subscription.save();
 try{
-        await axios.post(N8N_WEBHOOK, {
+        await axios.post( {
   event: "SUBSCRIPTION_RENEWAL_SUCCESS",
   subscriptionId: subscription._id,
   orderId: payment.order_id,
