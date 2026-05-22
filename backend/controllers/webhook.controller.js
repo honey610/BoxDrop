@@ -15,7 +15,7 @@ export const razorpayWebhook = async (req, res) => {
 
     const expectedSignature = crypto
       .createHmac("sha256", secret)
-      .update(req.body)
+      .update(req.body.toString())
       .digest("hex");
 
     if (signature !== expectedSignature) {
