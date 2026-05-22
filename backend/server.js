@@ -25,7 +25,10 @@ const app = express();
 app.use("/webhook", webhookRoutes);
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+      origin:"https://boxdrop-frontend.onrender.com",
+      credentials:true
+}));
 app.use("/users", userRoutes);
 app.use("/sellers", sellerRoutes);
 app.use("/boxes", boxRoutes);
