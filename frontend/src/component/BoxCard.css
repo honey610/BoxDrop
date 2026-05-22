@@ -1,0 +1,104 @@
+/* .box-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.box-card:hover {
+  transform: translateY(-6px);
+}
+
+.box-image {
+  position: relative;
+}
+
+.box-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.price-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: white;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.box-category {
+  font-size: 13px;
+  color: #6f42c1;
+  font-weight: 600;
+}
+
+.rating {
+  font-weight: 600;
+}
+
+
+
+.box-card.scroll-3d {
+  transform: translateZ(40px) scale(1.03);
+} */
+.box-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.box-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Image */
+.box-image-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.box-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.box-card:hover .box-image {
+  transform: scale(1.08);
+}
+
+/* Category */
+.box-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+/* Price */
+.box-price {
+  font-size: 1.1rem;
+}
+
+.order-card {
+  width: 100%;
+  max-width: 520px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+

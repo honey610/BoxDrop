@@ -1,0 +1,126 @@
+.admin-approval {
+  padding: 28px;
+  background: #000;
+  min-height: 100%;
+}
+
+/* HEADER */
+.admin-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.admin-header p {
+  opacity: 0.85;
+}
+
+/* GRID */
+.approval-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* LEFT LIST */
+.approval-list {
+  background: #0b0b0b;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.box-item {
+  padding: 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.2s;
+}
+
+.box-item span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.box-item:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.box-item.active {
+  background: #3b6df6;
+}
+
+/* DETAILS */
+.approval-details {
+  background: #0b0b0b;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.approval-details h2 {
+  margin-bottom: 8px;
+}
+
+.desc {
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+/* IMAGES */
+.image-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.image-row img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* META */
+.meta {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 14px;
+}
+
+.actions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actions .approve {
+  background: #22c55e;
+  color: #000;
+}
+
+.actions .reject {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* EMPTY */
+.empty-state {
+  background: #0b0b0b;
+  padding: 60px;
+  border-radius: 18px;
+  text-align: center;
+}

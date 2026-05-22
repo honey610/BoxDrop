@@ -1,0 +1,94 @@
+.seller-apply-image {
+  background-image: url("/src/assets/bench-accounting-C3V88BOoRoM-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* height: 100vh; */
+}
+/* Full screen backdrop */
+.modal-backdrop-custom {
+  
+  
+  inset: 0;
+  z-index: 1050;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  /* margin: 20% auto; */
+
+   /* background: radial-gradient(
+    circle at top,
+    rgba(15, 32, 39, 0.95),
+    rgba(0, 0, 0, 0.98)
+  ); */
+
+  /* backdrop-filter: blur(10px); */
+}
+
+/* Modal card */
+.modal-card {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 28px;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.95),
+    rgba(15, 23, 42, 0.95)
+  );
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  color: #e5e7eb;
+}
+
+/* Heading */
+.modal-card h4 {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Inputs */
+.modal-card .form-control {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.modal-card .form-control::placeholder {
+  color: #9ca3af;
+}
+
+.modal-card .form-control:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Buttons */
+.modal-card .btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+}
+
+.modal-card .btn-primary:hover {
+  opacity: 0.95;
+}
+
+.modal-card .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #e5e7eb;
+}
+
+.modal-card .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}

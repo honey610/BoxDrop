@@ -1,0 +1,39 @@
+
+.navbar.navbar-glass{
+ position: sticky!important;
+  top: 0;
+  z-index: 1000!important;
+
+  /* background: rgb(255, 255, 255)!important; */
+ /* transparency */
+  /* backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important; */
+
+  background: radial-gradient(circle at top, #0f2027, #000);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05)!important;
+}
+
+.navbar .nav-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+}
+
+.profile-btn {
+  background: linear-gradient(135deg, #4800ff, #7b2cff);
+  color: white;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: none;
+}
+.profile-btn:hover {
+  background: linear-gradient(135deg, #7b2cff, #4800ff);
+  color: white;
+}

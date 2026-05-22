@@ -1,0 +1,44 @@
+.how-page {
+  max-width: 1100px;
+}
+.how-page-background {
+  background: radial-gradient(circle at top, #183745, #000);
+  color: white; 
+}
+/* Cards */
+.how-card {
+  background: white;
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.how-icon {
+  color: #4800ff;
+}
+
+/* Fade animation */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FAQ */
+.faq-section {
+  max-width: 800px;
+  margin: auto;
+}

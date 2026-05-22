@@ -1,0 +1,38 @@
+.browse-header h2 {
+  font-size: 2rem;
+}
+
+.browse-search input {
+  max-width: 500px;
+}
+
+.page-center {
+  /* height: 60vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+.browse-page-container{
+   background: radial-gradient(circle at top, #183745, #000);
+  color: white; 
+  min-height: 100vh;
+}
+.browse-search {
+  
+  position: sticky;
+  top: 72px; /* below navbar */
+  z-index: 1000;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  background: radial-gradient(circle at top, #183745, #000);
+  width: 50%;
+  border-radius: 14px;
+  padding: 12px;
+
+  transition: all 0.25s ease;
+}
+
