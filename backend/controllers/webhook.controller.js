@@ -70,16 +70,16 @@ console.log("🔥 PAYMENT:", payment);
           orderType: "ONE_TIME",
           status: "PLACED",
         });
-try{
-          await axios.post( {
-  event: "ONE_TIME_ORDER_CREATED",
-  userId: notes.userId,
-  boxId: notes.boxId,
-  type: "ONE_TIME",
-});
-} catch(err){
-  console.error("Failed to notify n8n:", err);
-}
+// try{
+//           await axios.post( {
+//   event: "ONE_TIME_ORDER_CREATED",
+//   userId: notes.userId,
+//   boxId: notes.boxId,
+//   type: "ONE_TIME",
+// });
+// } catch(err){
+//   console.error("Failed to notify n8n:", err);
+// }
 
         console.log("✅ One-time order created");
       }
@@ -125,16 +125,16 @@ try{
           subscriptionId: subscription._id,
           status: "PLACED",
         });
-try{
-        await axios.post( {
-  event: "SUBSCRIPTION_CREATED",
-  subscriptionId: subscription._id,
-  userId: notes.userId,
-  boxId: box._id,
-});
-} catch(err){
-  console.error("Failed to notify n8n:", err);
-}
+// try{
+//         await axios.post( {
+//   event: "SUBSCRIPTION_CREATED",
+//   subscriptionId: subscription._id,
+//   userId: notes.userId,
+//   boxId: box._id,
+// });
+// } catch(err){
+//   console.error("Failed to notify n8n:", err);
+// }
 
 
         console.log("✅ Subscription + first order created");
@@ -174,15 +174,15 @@ try{
           calculateNextBillingDate(subscription.billingCycle);
 
         await subscription.save();
-try{
-        await axios.post( {
-  event: "SUBSCRIPTION_RENEWAL_SUCCESS",
-  subscriptionId: subscription._id,
-  orderId: payment.order_id,
-});
-} catch(err){
-  console.error("Failed to notify n8n:", err);
-}
+// // try{
+//         await axios.post( {
+//   event: "SUBSCRIPTION_RENEWAL_SUCCESS",
+//   subscriptionId: subscription._id,
+//   orderId: payment.order_id,
+// });
+// } catch(err){
+//   console.error("Failed to notify n8n:", err);
+// }
 
 
         console.log("✅ Subscription renewal successful");
