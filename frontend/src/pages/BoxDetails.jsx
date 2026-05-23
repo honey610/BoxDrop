@@ -15,7 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 
-
+const BACKEND_URL = "https://boxdrop-backend-w7s7.onrender.com";
 function BoxDetails() {
      const { id } = useParams(); // 👈 get box id from URL
   const [box, setBox] = useState(null);
@@ -211,7 +211,7 @@ const handleSubscribePayment = async () => {
             <img
   src={
     box.images?.[0]
-      ? `http://localhost:5000${box.images[0]}`
+      ? `${BACKEND_URL}${box.images[0]}`
       // ?`box.images[0]`
       : "https://images.unsplash.com/photo-1582650859079-ee63913ecb84?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
