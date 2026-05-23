@@ -16,11 +16,19 @@ export const razorpayWebhook = async (req, res) => {
   try {
     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
     const signature = req.headers["x-razorpay-signature"];
+if (!req.body) {
+  console.log("❌ req.body is missing");
+  return res.status(400).json({
+    message: "No body received",
+  });
+}
+
 const rawBody = Buffer.isBuffer(req.body)
   ? req.body.toString("utf8")
   : JSON.stringify(req.body);
 
-// console.log("BODY:", rawBody);
+console.log("BODY:", rawBody);
+
     const expectedSignature = crypto
       .createHmac("sha256", secret)
       .update(rawBody)
