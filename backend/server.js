@@ -15,10 +15,15 @@ import "./cron/subscription.js";
 // import cronRoutes from "./routes/cron.routes.js";
 import "./cron/monthlyLimit.js";
 import "./cron/autoCancelUnshippedOrders.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 
 dotenv.config(); // ✅ Load environment variables
 console.log("firebase connected");
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -37,6 +42,12 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/upload", uploadRoutes);
 app.use("/orders", orderRoutes);
 app.use("/payments", paymentRoutes);
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 // app.use("/api/cron", cronRoutes);
 
 
