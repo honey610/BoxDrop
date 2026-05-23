@@ -46,14 +46,33 @@ const rawBody = Buffer.isBuffer(req.body)
 
     console.log("STEP 3");
 
-      /* 🔐 GLOBAL IDEMPOTENCY */
-      const alreadyProcessed = await Order.findOne({
-        paymentTransactionId: payment.id,
-      });
-      if (alreadyProcessed) {
-        console.log("⚠️ Payment already processed");
-        return res.status(200).json({ status: "duplicate" });
-      }
+      // /* 🔐 GLOBAL IDEMPOTENCY */
+      // const alreadyProcessed = await Order.findOne({
+      //   paymentTransactionId: payment.id,
+      // });
+      // if (alreadyProcessed) {
+      //   console.log("⚠️ Payment already processed");
+      //   return res.status(200).json({ status: "duplicate" });
+      // }
+
+      console.log("CHECKING DUPLICATE");
+
+let alreadyProcessed = null;
+
+try {
+
+  alreadyProcessed = await Order.findOne({
+    paymentTransactionId: payment.id,
+  }).lean();
+
+  console.log("DUPLICATE QUERY SUCCESS");
+
+} catch(err) {
+
+  console.log("DUPLICATE QUERY FAILED");
+  console.log(err);
+
+}
 console.log("STEP 4");
       /* ==========================================
          🧾 ONE-TIME ORDER
