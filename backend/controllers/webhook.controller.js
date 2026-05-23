@@ -12,17 +12,21 @@ export const razorpayWebhook = async (req, res) => {
   try {
     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
     const signature = req.headers["x-razorpay-signature"];
-console.log("BODY:", req.body.toString());
+const rawBody = Buffer.isBuffer(req.body)
+  ? req.body.toString("utf8")
+  : JSON.stringify(req.body);
+
+console.log("BODY:", rawBody);
     const expectedSignature = crypto
       .createHmac("sha256", secret)
-      .update(req.body.toString())
+      .update(rawBody)
       .digest("hex");
 
     if (signature !== expectedSignature) {
       return res.status(400).json({ message: "Invalid signature" });
     }
 
-    const event = JSON.parse(req.body.toString());
+    const event = JSON.parse(rawBody);
 
     /* =====================================================
        ✅ PAYMENT SUCCESS
@@ -31,8 +35,7 @@ console.log("BODY:", req.body.toString());
       const payment = event.payload.payment.entity;
       const notes = payment.notes || {};
     //  console.log(notes.type);
-    console.log("🔥 NOTES:", notes);
-console.log("🔥 PAYMENT:", payment);
+   
 
 
     
