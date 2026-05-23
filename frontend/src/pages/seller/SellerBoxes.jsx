@@ -1,8 +1,7 @@
 import { Plus, Edit, Eye, PauseCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
-
-
+const BACKEND_URL = "https://boxdrop-backend-w7s7.onrender.com";
 
 import api from "../../api/api";
 import "./Seller.css";
@@ -134,7 +133,7 @@ const [reasonText, setReasonText] = useState("");
       <td>
         {box.images && box.images.length > 0 ? (
           <img
-            src={`http://localhost:5000${box.images[0]}`}
+            src={`${BACKEND_URL}${box.images[0]}`}
             alt="Box"
             className="box-image"
             style={{width:"200px",height:"200px"}}

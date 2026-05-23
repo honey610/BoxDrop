@@ -5,6 +5,8 @@ import "./AdmainBoxesApproval.css";
 import Navbar from "../component/Navbar";
 import RejectBoxModal from "./seller/RejectionBoxModal";
 
+
+const BACKEND_URL = "https://boxdrop-backend-w7s7.onrender.com";
 function AdminBoxesApproval() {
   const [boxes, setBoxes] = useState([]);
   const [selectedBox, setSelectedBox] = useState(null);
@@ -113,7 +115,7 @@ function AdminBoxesApproval() {
               {selectedBox.images?.length > 0 && (
                 <div className="image-row">
                   {selectedBox.images.map((img, i) => (
-                    <img key={i} src={`http://localhost:5000${img}`} alt="box" />
+                    <img key={i} src={`${BACKEND_URL}${img}`} alt="box" />
                   ))}
                 </div>
               )}

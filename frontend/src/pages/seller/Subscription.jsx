@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../../api/api";
 // import Navbar from "../../component/Navbar";
-
+const BACKEND_URL = "https://boxdrop-backend-w7s7.onrender.com";
 function Subscription() {
   const [subscriptions, setSubscriptions] = useState([]);
 
@@ -64,7 +64,7 @@ function Subscription() {
 
                   
                    <img
-            src={`http://localhost:5000${sub.boxId?.images[0]}`}
+            src={`${BACKEND_URL}${sub.boxId?.images[0]}`}
             alt="Box"
             className="box-image"
             style={{width:"200px",height:"200px"}}
