@@ -32,13 +32,15 @@ console.log("BODY:", rawBody);
        ✅ PAYMENT SUCCESS
        ===================================================== */
     if (event.event === "payment.captured") {
+      console.log("STEP 1");
       const payment = event.payload.payment.entity;
+      console.log("STEP 2");
       const notes = payment.notes || {};
     //  console.log(notes.type);
    
 
 
-    
+    console.log("STEP 3");
 
       /* 🔐 GLOBAL IDEMPOTENCY */
       const alreadyProcessed = await Order.findOne({
@@ -48,7 +50,7 @@ console.log("BODY:", rawBody);
         console.log("⚠️ Payment already processed");
         return res.status(200).json({ status: "duplicate" });
       }
-
+console.log("STEP 4");
       /* ==========================================
          🧾 ONE-TIME ORDER
          ========================================== */
