@@ -172,7 +172,7 @@ export const updateOrderStatusBySeller=async(req,res)=>{
     message: "Shipping deadline missed. Order auto-cancelled.",
   });
 }
-
+console.log("otp generation starting");
     const otp=crypto.randomInt(100000,999999).toString();
     order.status = "SHIPPED";
     order.deliveryOtp = otp;
@@ -180,7 +180,7 @@ export const updateOrderStatusBySeller=async(req,res)=>{
     order.otpAttempts = 0;
     order.shippedAt = new Date();
 
-   
+   console.log("otp generated:", otp);
 
     await order.save();
      sendOtpEmail({
