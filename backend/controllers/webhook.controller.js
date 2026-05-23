@@ -8,6 +8,10 @@ import axios from "axios";
 // const N8N_WEBHOOK = "https://boxdrop.app.n8n.cloud/webhook-test/order-update";
 export const razorpayWebhook = async (req, res) => {
   console.log("🔥 Razorpay webhook HIT");
+  console.log(
+    "EVENT TYPE:",
+    JSON.parse(req.body.toString()).event
+  );
 
   try {
     const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
@@ -16,7 +20,7 @@ const rawBody = Buffer.isBuffer(req.body)
   ? req.body.toString("utf8")
   : JSON.stringify(req.body);
 
-console.log("BODY:", rawBody);
+// console.log("BODY:", rawBody);
     const expectedSignature = crypto
       .createHmac("sha256", secret)
       .update(rawBody)
