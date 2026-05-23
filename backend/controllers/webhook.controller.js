@@ -39,6 +39,8 @@ console.log("BODY:", rawBody);
     }
 
     const event = JSON.parse(rawBody);
+    console.log("✅ Webhook signature verified");
+    console.log("EVENT:", event);
 
     /* =====================================================
        ✅ PAYMENT SUCCESS
