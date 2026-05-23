@@ -4,7 +4,7 @@ import api from "../../api/api";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./OrderHistory.css";
-
+const BACKEND_URL = "https://boxdrop-backend-w7s7.onrender.com";
 function OrderHistory() {
   const [orders, setOrders] = useState([]);
 //   const [loading, setLoading] = useState(true);
@@ -73,7 +73,7 @@ useEffect(() => {
                       <img
   src={
     order.boxId?.images?.[0]
-      ? `http://localhost:5000${order.boxId.images[0]}`
+      ? `${BACKEND_URL}${order.boxId.images[0]}`
       : "https://via.placeholder.com/300x200?text=No+Image"
   }
   alt={order.boxId?.title || "Order box"}
@@ -136,7 +136,7 @@ useEffect(() => {
                      <img
   src={
     sub.boxId?.images?.[0]
-      ? `http://localhost:5000${sub.boxId.images[0]}`
+      ? `${BACKEND_URL}${sub.boxId.images[0]}`
       : "https://via.placeholder.com/300x200?text=No+Image"
   }
   alt={sub.titleSnapshot || "Subscription box"}
