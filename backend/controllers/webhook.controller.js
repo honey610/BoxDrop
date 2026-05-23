@@ -49,27 +49,61 @@ console.log("🔥 PAYMENT:", payment);
       /* ==========================================
          🧾 ONE-TIME ORDER
          ========================================== */
-      if (notes.type === "ONE_TIME") {
-        await Order.create({
-          userId: notes.userId,
-          sellerId: notes.sellerId,
-          boxId: notes.boxId,
-          shippingAddress: notes.shippingAddress
-        ? JSON.parse(notes.shippingAddress)
-        : {},
-          quantity: 1,
-          priceSnapshot: payment.amount / 100,
+          if (notes.type === "ONE_TIME") {
+         try {
 
-          paymentProvider: "RAZORPAY",
-          paymentMethod: payment.method?.toUpperCase(),
-          paymentStatus: "PAID",
-          paymentTransactionId: payment.id,
-          paymentIntentId: payment.order_id,
+  const order = await Order.create({
+    userId: notes.userId,
+    sellerId: notes.sellerId,
+    boxId: notes.boxId,
 
-          payoutStatus: "HOLD",
-          orderType: "ONE_TIME",
-          status: "PLACED",
-        });
+    shippingAddress: notes.shippingAddress
+      ? JSON.parse(notes.shippingAddress)
+      : {},
+
+    quantity: 1,
+    priceSnapshot: payment.amount / 100,
+
+    paymentProvider: "RAZORPAY",
+    paymentMethod: payment.method?.toUpperCase(),
+    paymentStatus: "PAID",
+    paymentTransactionId: payment.id,
+    paymentIntentId: payment.order_id,
+
+    payoutStatus: "HOLD",
+    orderType: "ONE_TIME",
+    status: "PLACED",
+  });
+
+  console.log("✅ ORDER CREATED:", order);
+
+} catch(err) {
+
+  console.error("❌ ORDER CREATE ERROR:");
+  console.error(err);
+
+}
+     
+      //   await Order.create({
+      //     userId: notes.userId,
+      //     sellerId: notes.sellerId,
+      //     boxId: notes.boxId,
+      //     shippingAddress: notes.shippingAddress
+      //   ? JSON.parse(notes.shippingAddress)
+      //   : {},
+      //     quantity: 1,
+      //     priceSnapshot: payment.amount / 100,
+
+      //     paymentProvider: "RAZORPAY",
+      //     paymentMethod: payment.method?.toUpperCase(),
+      //     paymentStatus: "PAID",
+      //     paymentTransactionId: payment.id,
+      //     paymentIntentId: payment.order_id,
+
+      //     payoutStatus: "HOLD",
+      //     orderType: "ONE_TIME",
+      //     status: "PLACED",
+      //   });
 // try{
 //           await axios.post( {
 //   event: "ONE_TIME_ORDER_CREATED",
@@ -81,7 +115,7 @@ console.log("🔥 PAYMENT:", payment);
 //   console.error("Failed to notify n8n:", err);
 // }
 
-        console.log("✅ One-time order created");
+        // console.log("✅ One-time order created");
       }
 
 
