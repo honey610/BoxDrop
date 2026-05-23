@@ -1,16 +1,32 @@
 import nodemailer from "nodemailer";
 
 const transporter= nodemailer.createTransport({ 
-    service: 'Gmail', 
-     pool: true,        // 🔥 reuse connections
-  maxConnections: 5,
-  maxMessages: 100,
-   rateLimit: 10,
-    auth: { 
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASS 
-    } 
+  //   service: 'Gmail', 
+  //    pool: true,        // 🔥 reuse connections
+  // maxConnections: 5,
+  // maxMessages: 100,
+  //  rateLimit: 10,
+  //   auth: { 
+  //       user: process.env.EMAIL_USER, 
+  //       pass: process.env.EMAIL_PASS 
+  //   } 
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 30000,
 });
+
+await transporter.verify();
+
+console.log("SMTP READY");
 
 export const sendOtpEmail = async ({ to, otp, boxTitle }) => {
    console.log("📧 sendOtpEmail CALLED with:", { to, otp, boxTitle });
