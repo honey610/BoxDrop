@@ -188,7 +188,7 @@ console.log("otp generation starting");
      otp,
       boxTitle: order.boxId.title,
     }).catch(err => {
-  console.error("OTP email failed:", err.message);
+  console.error("OTP email failed:", err);
 });
       // Send OTP to customer's phone number (mocked here)
     console.log(`Delivery OTP for order ${orderId}: ${otp}`);

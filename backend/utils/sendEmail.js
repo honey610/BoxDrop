@@ -11,14 +11,16 @@ const transporter= nodemailer.createTransport({
   //       pass: process.env.EMAIL_PASS 
   //   } 
   service: "gmail",
-//   port: 465,
-// secure: false,
+// //   port: 465,
+// // secure: false,
 
 
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+
+
 
   connectionTimeout: 30000,
   greetingTimeout: 30000,
