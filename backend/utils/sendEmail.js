@@ -25,11 +25,19 @@ const transporter= nodemailer.createTransport({
   socketTimeout: 30000,
 });
 
-try {
-  await transporter.verify();
-  console.log("SMTP READY");
-} catch (err) {
-  console.error("SMTP VERIFY FAILED:", err);
+// try {
+//   await transporter.verify();
+//   console.log("SMTP READY");
+// } catch (err) {
+//   console.error("SMTP VERIFY FAILED:", err);
+// }
+if (process.env.NODE_ENV !== "production") {
+  try {
+    await transporter.verify();
+    console.log("SMTP READY");
+  } catch (err) {
+    console.error("SMTP VERIFY FAILED:", err);
+  }
 }
 
 export const sendOtpEmail = async ({ to, otp, boxTitle }) => {
