@@ -31,7 +31,7 @@ app.use("/webhook",express.raw({ type: "application/json" }), webhookRoutes);
 
 app.use(express.json());
 app.use(cors({
-      origin:"https://boxdrop-frontend.onrender.com",
+      origin:["https://boxdrop-frontend.onrender.com","http://localhost:5173"],
       credentials:true
 }));
 app.use("/users", userRoutes);

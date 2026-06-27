@@ -52,6 +52,10 @@ function Login() {
       dispatch(setUser(res.data.user));
       redirectByRole(res.data.user.role);
     } catch (err) {
+      console.error(err);
+  console.error("Message:", err.message);
+  console.error("Code:", err.code);
+  console.error("Response:", err.response);
        console.error("Google login error:", err.response?.data || err.message);
   alert(err.response?.data?.message || "Google login failed");
     } finally {
