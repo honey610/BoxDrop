@@ -1,30 +1,40 @@
 import nodemailer from "nodemailer";
 
-const transporter= nodemailer.createTransport({ 
-  //   service: 'Gmail', 
-  //    pool: true,        // 🔥 reuse connections
-  // maxConnections: 5,
-  // maxMessages: 100,
-  //  rateLimit: 10,
-  //   auth: { 
-  //       user: process.env.EMAIL_USER, 
-  //       pass: process.env.EMAIL_PASS 
-  //   } 
-host: "smtp.gmail.com",
-  port: 465,
-secure: true,
+// const transporter= nodemailer.createTransport({ 
+//   //   service: 'Gmail', 
+//   //    pool: true,        // 🔥 reuse connections
+//   // maxConnections: 5,
+//   // maxMessages: 100,
+//   //  rateLimit: 10,
+//   //   auth: { 
+//   //       user: process.env.EMAIL_USER, 
+//   //       pass: process.env.EMAIL_PASS 
+//   //   } 
+// host: "smtp.gmail.com",
+//   port: 465,
+// secure: true,
 
 
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS,
+//   },
+
+
+
+//   connectionTimeout: 30000,
+//   greetingTimeout: 30000,
+//   socketTimeout: 30000,
+// });
+
+const transporter = nodemailer.createTransport({
+  host: "smtp-relay.brevo.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.BREVO_USER,
+    pass: process.env.BREVO_PASS,
   },
-
-
-
-  connectionTimeout: 30000,
-  greetingTimeout: 30000,
-  socketTimeout: 30000,
 });
 
 // try {
@@ -45,7 +55,7 @@ if (process.env.NODE_ENV !== "production") {
 export const sendOtpEmail = async ({ to, otp, boxTitle }) => {
    console.log("📧 sendOtpEmail CALLED with:", { to, otp, boxTitle });
  const info =await transporter.sendMail({
-    from: `"BoxDrop" <${process.env.EMAIL_USER}>`,
+    from: `"BoxDrop" <${process.env.SENDER_EMAIL}>`,
     to,
     subject: "Your Delivery OTP",
     html: `
@@ -73,7 +83,7 @@ export const sendDeliveryConfirmationEmail = async ({
     user,
   });
   await transporter.sendMail({
-    from: `"BoxDrop" <${process.env.EMAIL_USER}>`,
+    from: `"BoxDrop" <${process.env.SENDER_EMAIL}>`,
     to, // must be email string
     subject: "📦 Delivery Confirmed",
     html: `
@@ -108,7 +118,7 @@ export const sendDeliveryConfirmationEmailtoSeller = async ({
 ) => {
   console.log("📧 sendDeliveryConfirmationEmailtoSeller CALLED with:")
   await transporter.sendMail({
-    from: `"BoxDrop" <${process.env.EMAIL_USER}>`,  
+    from: `"BoxDrop" <${process.env.SENDER_EMAIL}>`,  
     to, // must be email string
     subject: "📦 Order Delivered Successfully",
     html: `
@@ -138,7 +148,7 @@ export const sendOrderConfirmationEmail = async ({ to, boxTitle, user }) => {
     user,
   });
   await transporter.sendMail({
-    from: `"BoxDrop" <${process.env.EMAIL_USER}>`,
+    from: `"BoxDrop" <${process.env.SENDER_EMAIL}>`,
     to,
     subject: "📦 Order Confirmation",
     html: `
@@ -179,7 +189,7 @@ export const sendRenewalPaymentLinkEmail = async ({
     amount,
   });
   await transporter.sendMail({
-    from: `"BoxDrop" <${process.env.EMAIL_USER}>`,
+    from: `"BoxDrop" <${process.env.SENDER_EMAIL}>`,
     to,
     subject: `💳 Subscription Renewal Payment - ${boxTitle}`,
     html: `
