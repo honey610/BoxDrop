@@ -214,9 +214,9 @@ const handleCancelOrder = async () => {
 
     {order.status === "SHIPPED" && (
   <p className=" mt-2">
-    📩 A delivery OTP has been sent to your registered email.
+    📩 A delivery OTP has been sent to your registered email. If havent't recived then OTP is {getOtp}.
   </p>
-    <h2>Otp is:{getOtp}</h2>
+   
 )
 }
 
