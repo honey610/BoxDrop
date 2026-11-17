@@ -17,6 +17,7 @@ const [showCancelBox, setShowCancelBox] = useState(false);
 const [open, setOpen] = useState(false);
 const [snackbarMsg, setSnackbarMsg] = useState("");
 const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const[getOtp,setGetOtp]=useState("");
 
 const handleClose = (_, reason) => {
   if (reason === "clickaway") return;
@@ -28,6 +29,7 @@ const handleClose = (_, reason) => {
       try {
         const res = await api.get(`/orders/${id}`);
         setOrder(res.data.order);
+        setGetOtp(res.data.order.deliveryOtP);
       } catch (err) {
         console.error("Failed to fetch order", err);
       }
@@ -214,6 +216,7 @@ const handleCancelOrder = async () => {
   <p className=" mt-2">
     📩 A delivery OTP has been sent to your registered email.
   </p>
+    <h2>Otp is:{getOtp}</h2>
 )
 }
 
