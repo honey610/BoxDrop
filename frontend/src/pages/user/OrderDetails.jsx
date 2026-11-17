@@ -17,7 +17,7 @@ const [showCancelBox, setShowCancelBox] = useState(false);
 const [open, setOpen] = useState(false);
 const [snackbarMsg, setSnackbarMsg] = useState("");
 const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-  const[getOtp,setGetOtp]=useState("");
+  const[getOtp,setGetOtp]=useState(false);
 
 const handleClose = (_, reason) => {
   if (reason === "clickaway") return;
