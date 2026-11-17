@@ -17,7 +17,7 @@ const [showCancelBox, setShowCancelBox] = useState(false);
 const [open, setOpen] = useState(false);
 const [snackbarMsg, setSnackbarMsg] = useState("");
 const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-  const[getOtp,setGetOtp]=useState(false);
+  const[getOtp,setGetOtp]=useState("");
 
 const handleClose = (_, reason) => {
   if (reason === "clickaway") return;
@@ -29,7 +29,7 @@ const handleClose = (_, reason) => {
       try {
         const res = await api.get(`/orders/${id}`);
         setOrder(res.data.order);
-        setGetOtp(res.data.order.deliveryOtP);
+        setGetOtp(res.data.order.deliveryOtp);
       } catch (err) {
         console.error("Failed to fetch order", err);
       }
